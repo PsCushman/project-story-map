@@ -25,7 +25,7 @@
             </div>
 
             <section data-place="overview" class="viewing">
-                <h2 class="text-center">Welcome to our Project Overview!</h2>
+                <h2 class="text-center">Welcome to our Project!</h2>
                 <p>We are David, Leo, and Payson and we made a lot of maps.</p>
                 <p>For this project, we used:</p>
                 <p>API and CSV to generate data, Python and Pandas to clean data, and SQL to store data and execute queries.</p>
@@ -36,7 +36,7 @@
                 <h2>Starting with a Cluster Map</h2>
                 <p>The first thing we did was make a cluster map. It was a nice place to begin because we had a solid example from which to jump.</p>
                 <p>The scores are color coated on the markers, and we added a search control - a plugin we had not yet used.</p>
-                <p>The marker here in the story map is relativley abitrary. It is the Lat and Long of Benu, a fancy SF resturant that I used repeatedly to see if the search function worked.</p>
+                <p>The marker here in the story map is relativley abitrary. It is the latitude and longitude of Benu, a fancy SF resturant that we used repeatedly to see if the search function worked.</p>
                 <p>The Leaflet plugin did not allow for searching clustered markers, so we had to create a separate layer of invisible markers to search.</p>
                 <p>You can check out both the code for the invisible markers and the map itself below.</p>
                 <img src="static/images/invisible.png" alt="Invisible Image">
@@ -45,12 +45,17 @@
                 <button class="map-button" onclick="window.open('https://pscushman.github.io/project-cluster-map/', '_blank')">Searchable, Filterable, Cluster Map</button>
             </section>
 
-            <section  data-place="good_hood">
-                <h2>Potrero Hill</h2>
-                <p>Good Hood</p>
-                <p>Good Hood</p>
-                <p>Good Hood</p>
-                <p>Good Hood</p>
+            <section  data-place="choropleth">
+                <h2>Frustrated by GeoJson</h2>
+                <p>SF Public Health Data we used contained scores for 809 restaurants.</p>
+                <p>And not all zipcode areas were represented in city's data so we had to account for that. The marker here is set to the main post office for 94132, the zipcode with the highest avg inspection score of 90.</p>
+                <p>Coordinates from inspection score json would not plot over geojson of San Francisco.</p>
+                <img src="static/images/image_720.png" alt="GeoJson Image" style="max-width: 100%; height: auto;">
+                <p>So we had to convert inspection score json to geojson</p>
+                <img src="static/images/image_721.png" alt="GeoJson2 Image" style="max-width: 100%; height: auto;">
+                <br>
+                <br>
+                <p>Finally, we got our choropleth map which you can check out by clicking on the button below!</p>
                 <button class="map-button" onclick="window.open('https://dalfonsonash.github.io/resto_choropleth/', '_blank')">Choropleth Map</button>
             </section>
 
@@ -78,14 +83,14 @@
             </section>
 
             <section data-place="lees">
-                <h2>The Case of Lee's Deli </h2>
+                <h2>The Case of Lee's Deli</h2>
                 <div class="image-container">
                     <img src="static/images/lees.png" alt="Lee's Restaurant">
                 </div>
-                <p>In our first SQL searches, we found that Lee's had the most high risk incidents. However, we did not include the business id and because Lee's had multiple locations, it semmed worst than it was.</p>
-                <p>Once we fixed this and used both the business name and busniess id to filter resturants, we found that Lee's had 4 locations, with an avg score of approx 83.9</p>
-                <p>We still had an issue when accounting for incident counts once we added business ids.</p>
-                <p>For instance, Taqueria Cancun where one of us used to eat a lot cira 2008, had 6 incidents, but it also had the most inspections of any non-school over the period. Once we adjusted for incidents per inspection date, we found that there was only one recorded incident per visit for every foodservice establishment.</p>
+                <p>In our first SQL searches, we found that Lee's had the most high-risk incidents. However, we did not include the business ID, and because Lee's had multiple locations, it seemed worse than it was.</p>
+                <p>Once we fixed this and used both the business name and business ID to filter restaurants, we found that Lee's had 4 locations, with an average score of approximately 83.9.</p>
+                <p>We still had an issue when accounting for incident counts once we added business IDs.</p>
+                <p>For instance, Taqueria Cancun, where one of us used to eat a lot circa 2008, had 6 incidents, but it also had the most inspections of any non-school over the period. Once we adjusted for incidents per inspection date, we found that there was only one recorded incident per visit for every foodservice establishment.</p>
             </section>
 
             <section  data-place="schools">
@@ -96,12 +101,21 @@
                 <p>Our queries found that Francisco Middle School with an avg score of 96.4 did the best and is marked on our story map.<p>
                 <p>In case you are wondering, Tenderloin Elementry did the worst with an avg score of 89.4.</p>
             </section>
-        </div>
 
+            <section data-place="storymap">
+                <h2>Bringing it All Back Home</h2>
+                <p>This project and the presentation are entirely contained within our story map, GitHub Pages, and a localhost using HTML, JavaScript, and CSS.</p>
+                <p>There were a few bugs when we attempted to download the plugin from GitHub, but by saving the webpage directly and then working backwards, loading scripts and playing with the CSS, we got it to work.</p>
+                <p>A map to present maps felt fitting.</p>
+                <p>It's All Over Now, Baby Blue.</p>
+                <audio controls>
+                    <source src="static/images/It-s-All-Over-Now-Baby-Blue-Them.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </section>
         </div>
-
+        </div>
         <div id="map" class="col-sm-3 col-md-5 sidebar leaflet-container leaflet-fade-anim" tabindex="0">
-
     </div>
 </div>
 <script src="static/js/underscore-min.js"></script>
@@ -118,11 +132,12 @@
         var markers = {
             overview: {lat: 37.7749, lon: -122.4194, zoom: 12},
             cluster: {lat: 37.7854,  lon: -122.3992, zoom: 14},
-            good_hood: {lat: 37.7636, lon: -122.4200, zoom: 14},
+            choropleth: {lat: 37.732988990, lon: -122.4907422, zoom: 13},
             years: {lat: 37.7467, lon: -122.4863, zoom: 13},
             jumbo: {lat: 37.754132, lon: -122.480058, zoom: 13},
             lees: {lat: 37.793996, lon: -122.400096, zoom: 14},
             schools: {lat: 37.804368, lon: -122.411617, zoom: 14},
+            storymap: {lat: 37.7749, lon: -122.4194, zoom: 12},
         };
 
         
