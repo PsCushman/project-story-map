@@ -39,7 +39,7 @@
                 <p>The marker here in the story map is relativley abitrary. It is the latitude and longitude of Benu, a fancy SF resturant that we used repeatedly to see if the search function worked.</p>
                 <p>The Leaflet plugin did not allow for searching clustered markers, so we had to create a separate layer of invisible markers to search.</p>
                 <p>You can check out both the code for the invisible markers and the map itself below.</p>
-                <img src="static/images/invisible.png" alt="Invisible Image">
+                <img src="static/images/invisible.png" alt="Invisible Image" style="max-width: 100%; height: auto;">
                 <br>
                 <br>
                 <button class="map-button" onclick="window.open('https://pscushman.github.io/project-cluster-map/', '_blank')">Searchable, Filterable, Cluster Map</button>
@@ -73,11 +73,11 @@
                 <p>Over the period of provided data, New Jumbo Seafood (marked on the map) and Sunflower Restaurant had the lowest avg score at 60.5 and 63.5 respectivley. Both are still in operation today.</p>
                 <p>We also used Flask to take the API data and convert it into a DataFrame. Using Python and Pandas, we extracted only the restaurants with recent incidents categorized as high-risk.</p>
                 <p>First, we rendered the restaurants variable to the template:</p>
-                <img src="static/images/render_to_template.png" alt="Render Image">
+                <img src="static/images/render_to_template.png" alt="Render Image" style="max-width: 100%; height: auto;">
                 <p>Then we called the Jinja variables in HTML while converting it to JSON:</p>
-                <img src="static/images/html_jinja.png" alt="HTML_Jinja Image">
+                <img src="static/images/html_jinja.png" alt="HTML_Jinja Image" style="max-width: 100%; height: auto;">
                 <p>Lastly, we accessed the restaurants variable directly in our script as a normal variable:</p>
-                <img src="static/images/js_jinja.png" alt="JS_Jinja Image">
+                <img src="static/images/js_jinja.png" alt="JS_Jinja Image" style="max-width: 100%; height: auto;">
                 <p>Check it out running on localhost.</p>
                 <button class="api-button" onclick="window.open('http://127.0.0.1:5000', '_blank')">API, Flask, to Map</button>
             </section>
