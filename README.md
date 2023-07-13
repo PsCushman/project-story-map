@@ -1,5 +1,5 @@
 # project-story-map
-The purpose of this repo is to create a page that could be used for a group project.
+The purpose of this repo is to create a page that can be used for a group project.
 
 That said, as a template for a story map, it should work better than some others out there. So please to use and update it.
 
